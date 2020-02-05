@@ -93,7 +93,7 @@ Page({
       this.getDatas()
     } else {
       this.setData({
-        page: this.data.dogPage + 20
+        dogPage: this.data.dogPage + 20
       })
       this.getDogs()
     }

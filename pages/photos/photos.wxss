@@ -64,13 +64,13 @@
 }
 
 .tab-item.unactive {
-  left: -34rpx;
+  left: -40rpx;
 }
 
 .tab-dog {
-  top: 100rpx;
+  top: 130rpx;
 }
 
 .iconfont {
-  font-size: 24px;
+  font-size: 34px;
 }
