@@ -1,0 +1,63 @@
+/* pages/photos/photos.wxss */
+.cu-header {
+  /* background: #d66e50; */
+  background-image: linear-gradient(to top, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+
+.box-wrapper {
+  padding: 40rpx 40rpx;
+  column-count: 2;
+  column-gap: 20rpx;
+}
+
+.photo-block {
+  position: relative;
+}
+
+.image-box {
+  margin-bottom: 10rpx;
+  width: 100%;
+  height: 130px;
+  border-radius: 20rpx;
+}
+
+.author {
+  position: absolute;
+  bottom: 24rpx;
+  left: 10rpx;
+  font-size: 14rpx;
+  color: #fff;
+}
+
+.author .name {
+  font-weight: bold;
+}
+
+.tabs {
+  position: fixed;
+  left: 0;
+  top: 440rpx;
+  z-index: 999;
+}
+
+.tab-item {
+  position: absolute;
+  left: -6rpx;
+  padding: 10rpx;
+  border-radius: 0 2rem 2rem 0;
+  color: #fff;
+  background: linear-gradient(to top, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  transition: left .3s cubic-bezier(1,.28,.14,1.21);
+}
+
+.tab-item.unactive {
+  left: -34rpx;
+}
+
+.tab-dog {
+  top: 100rpx;
+}
+
+.iconfont {
+  font-size: 24px;
+}

@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container">
+  <cu-header isCustom="{{true}}">
+  </cu-header>
+  <view class="tabs">
+    <view class="tab-item tab-cat {{activeTab === 'cat' ? '' : 'unactive'}}" data-type="cat" bindtap="active">
+      <text class="iconfont icon-cat"></text>
+    </view>
+    <view class="tab-item tab-dog {{activeTab === 'dog' ? '' : 'unactive'}}" data-type="dog" bindtap="active">
+      <text class="iconfont icon-dog"></text>
+    </view>
+  </view>
+  <scroll-view
+    bindscrolltolower="scrollDown"
+    scroll-x="false"
+    scroll-y="true"
+    style="height: calc(100vh - {{CustomBar}}px);">
+    <view class="box-wrapper">
+      <block wx:for="{{photos}}" wx:key="id" >
+        <view class="photo-block" wx:if="{{index % 2 === 0}}">
+          <image class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
+          <view class="author">By <text class="name">{{item.photographer}}</text></view>
+        </view>
+      </block>
+      <block wx:for="{{photos}}" wx:key="id" >
+        <view class="photo-block" wx:if="{{index % 2 !== 0}}">
+          <image class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
+          <view class="author">By <text class="name">{{item.photographer}}</text></view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
