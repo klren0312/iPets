@@ -15,17 +15,43 @@
     scroll-x="false"
     scroll-y="true"
     style="height: calc(100vh - {{CustomBar}}px);">
-    <view class="box-wrapper">
-      <block wx:for="{{photos}}" wx:key="id" >
+    <view class="box-wrapper" wx:if="{{activeTab === 'cat'}}">
+      <block wx:for="{{catPhotos}}" wx:key="index" >
         <view class="photo-block" wx:if="{{index % 2 === 0}}">
-          <image class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
-          <view class="author">By <text class="name">{{item.photographer}}</text></view>
+          <image bindtap="preview" data-type="cat" data-origin="{{item.medium}}" class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
+          <view class="author">
+            <view>作者: <text class="name">{{item.photographer}}</text></view>
+            <!-- <view class="icon-like like">♥</view> -->
+          </view>
         </view>
       </block>
-      <block wx:for="{{photos}}" wx:key="id" >
+      <block wx:for="{{catPhotos}}" wx:key="index" >
         <view class="photo-block" wx:if="{{index % 2 !== 0}}">
-          <image class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
-          <view class="author">By <text class="name">{{item.photographer}}</text></view>
+          <image bindtap="preview" data-type="cat" data-origin="{{item.medium}}" class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
+          <view class="author">
+            <view>作者: <text class="name">{{item.photographer}}</text></view>
+            <!-- <view class="icon-like like">♥</view> -->
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="box-wrapper" wx:else>
+      <block wx:for="{{dogPhotos}}" wx:key="index" >
+        <view class="photo-block" wx:if="{{index % 2 === 0}}">
+          <image bindtap="preview" data-type="dog" data-origin="{{item.medium}}" class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
+          <view class="author">
+            <view>作者: <text class="name">{{item.photographer}}</text></view>
+            <!-- <view class="icon-like like">♥</view> -->
+          </view>
+        </view>
+      </block>
+      <block wx:for="{{dogPhotos}}" wx:key="index" >
+        <view class="photo-block" wx:if="{{index % 2 !== 0}}">
+          <image bindtap="preview" data-type="dog" data-origin="{{item.medium}}" class="image-box" mode='widthFix' src="{{item.small}}" lazy-load="{{true}}"></image>
+          <view class="author">
+            <view>作者: <text class="name">{{item.photographer}}</text></view>
+            <!-- <view class="icon-like like">♥</view> -->
+          </view>
         </view>
       </block>
     </view>

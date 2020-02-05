@@ -5,7 +5,7 @@
   <view class="main" style="height: calc(100vh - {{CustomBar}}px)">
     <button class="share" open-type="share" >
       <text class="iconfont icon-share"></text>
-      <text>点击分享</text>
+      <text style="visibilty:hidden;">点击分享</text>
     </button>
     <view class="top-content">
       <view class="circle circle-1"></view>
@@ -14,11 +14,12 @@
       <view class="circle circle-4"></view>
     </view>
     <view class="bottom-content">
-      <text class="title">i宠家</text>
+      <view class="title">i宠家</view>
       <view class="btn" bindtap="toDetails">
         进入图集
       </view>
       <view class="origin">Power by Pexels</view>
-    </view>  
+    </view>
   </view>
+  <canvas class="canvas-post" type="2d" id="mycanvas"/>
 </view>

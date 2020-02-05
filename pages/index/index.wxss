@@ -1,7 +1,6 @@
 /**index.wxss**/
 .container {
   background: #fff;
-  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
 }
 
 .top-content {
@@ -18,7 +17,7 @@
   right: -140rpx;
   top: 224rpx;
   border-radius: 2rem 0 0 2rem;
-  background: #d66e50;
+  background-image: linear-gradient(to top, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   color: #fff;
   transform: right .2s ease;
 }
@@ -102,7 +101,7 @@ button:not([size='mini']) {
   font-weight: bold;
   color: #fff;
   border-radius: 2rem;
-  background: #dd6e50;
+  background-image: linear-gradient(to top, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
 }
 
 .bottom-content .title {
@@ -110,52 +109,23 @@ button:not([size='mini']) {
   font-size: 75rpx;
   font-weight: bold;
   color: #fff;
-  animation: uk-text-shadow-glitch .65s cubic-bezier(1,-2.91,0,3.79) 0s infinite normal both running;
+  background-image: linear-gradient(to top, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  -webkit-background-clip:text; 
+  -webkit-text-fill-color:transparent; 
+  /* animation: uk-text-shadow-glitch .65s cubic-bezier(1,-2.91,0,3.79) 0s infinite normal both running; */
 }
 
 .bottom-content .origin {
   margin-top: 10rpx;
   line-height: 1.5;
   color: #dfdfdf;
+  background-image: linear-gradient(to top, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+  -webkit-background-clip:text; 
+  -webkit-text-fill-color:transparent;
 }
 
-@keyframes uk-text-shadow-glitch {
-  0% {
-      text-shadow: none
-  }
-  25% {
-      text-shadow: -2px -2px 0 #ff0048,2px 2px 0 #3234ff
-  }
-  50% {
-      text-shadow: 2px -2px 0 #ff0048,-2px 2px 0 #3234ff
-  }
-  75% {
-      text-shadow: -2px 2px 0 #ff0048,2px -2px 0 #3234ff
-  }
-  100% {
-      text-shadow: 2px 2px 0 #ff0048,-2px -2px 0 #3234ff
-  }
-}
-@keyframes uk-flicker {
-  0% {
-      opacity: 0
-  }
-  10% {
-      opacity: .6;
-      transform: scale(.8)
-  }
-  20% {
-      opacity: 0
-  }
-  40% {
-      opacity: 1
-  }
-  50% {
-      opacity: .2;
-      transform: scale(1.1)
-  }
-  100% {
-      opacity: 1;
-      transform: scale(1)
-  }
+.canvas-post {
+  position:fixed;
+  top: 0;
+  z-index: 999;
 }

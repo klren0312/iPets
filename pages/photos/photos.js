@@ -8,7 +8,9 @@ Page({
   data: {
     CustomBar: app.globalData.CustomBar,
     page: 0,
-    photos: [],
+    dogPage: 0,
+    catPhotos: [],
+    dogPhotos: [],
     activeTab: 'cat'
   },
 
@@ -22,10 +24,13 @@ Page({
     this.setData({
       activeTab: e.currentTarget.dataset.type
     })
+    if (this.data.activeTab === 'dog' && this.data.dogPhotos.length === 0) {
+      this.getDogs()
+    }
   },
   getDatas: function () {
     wx.showLoading({
-      title: '正在赶来🐱‍🏍'
+      title: '正在赶来🐱'
     })
     const db = wx.cloud.database()
     db.collection('animal')
@@ -34,9 +39,9 @@ Page({
       .limit(20)
       .get()
       .then(res => {
-        const total = this.data.photos.concat(res.data)
+        const total = this.data.catPhotos.concat(res.data)
         this.setData({
-          photos: total
+          catPhotos: total
         })
         wx.hideLoading()
       })
@@ -44,11 +49,54 @@ Page({
         wx.hideLoading()
       })
   },
-  scrollDown: function () {
-    this.setData({
-      page: this.data.page + 20
+  getDogs: function () {
+    wx.showLoading({
+      title: '正在赶来🐶'
     })
-    this.getDatas()
+    const db = wx.cloud.database()
+    db.collection('dog')
+      .orderBy('id', 'asc')
+      .skip(this.data.dogPage)
+      .limit(20)
+      .get()
+      .then(res => {
+        const total = this.data.dogPhotos.concat(res.data)
+        this.setData({
+          dogPhotos: total
+        })
+        wx.hideLoading()
+      })
+      .catch(() => {
+        wx.hideLoading()
+      })
+  },
+  preview: function (e) {
+    const currentUrl = e.currentTarget.dataset.origin
+    const type = e.currentTarget.dataset.type
+    let arr = []
+    if (type === 'cat') {
+      arr = this.data.catPhotos.map(v => v.medium)
+    } else {
+      arr = this.data.dogPhotos.map(v => v.medium)
+    }
+    wx.previewImage({
+      current: currentUrl,
+      urls: arr,
+      fail: (e) => console.log(e)
+    })
+  },
+  scrollDown: function () {
+    if (this.data.activeTab === 'cat') {
+      this.setData({
+        page: this.data.page + 20
+      })
+      this.getDatas()
+    } else {
+      this.setData({
+        page: this.data.dogPage + 20
+      })
+      this.getDogs()
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -96,6 +144,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: 'i宠家-宠物图集',
+      path: '/pages/index/index'
+    }
   }
 })

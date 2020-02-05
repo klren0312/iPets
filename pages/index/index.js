@@ -8,28 +8,25 @@ Page({
     photos: []
   },
   onLoad: function () {
+    try {
+      var value = wx.getStorageSync('noFirst')
+      if (value) {
+        wx.navigateTo({
+          url: '/pages/photos/photos'
+        })
+      }
+    } catch (e) {
+      wx.setStorage({
+        key: 'noFirst',
+        data: true
+      })
+    }
     // this.getDatas()
   },
   toDetails: function () {
     wx.navigateTo({
       url: '/pages/photos/photos'
     })
-  },
-  getDatas: function () {
-    const db = wx.cloud.database()
-    db.collection('animal')
-      .skip(Math.floor(Math.random() * 50))
-      .limit(4)
-      .get()
-      .then(res => {
-        this.setData({
-          photos: res.data
-        })
-        wx.hideLoading()
-      })
-      .catch(() => {
-        wx.hideLoading()
-      })
   },
   onShareAppMessage: function () {
     return {
