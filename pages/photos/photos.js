@@ -18,6 +18,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      page: Math.floor(Math.random() * 50),
+      dogPage: Math.floor(Math.random() * 50)
+    })
     this.getDatas()
   },
   active: function (e) {

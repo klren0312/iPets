@@ -3,9 +3,9 @@
   <cu-header isCustom="{{false}}">
   </cu-header>
   <view class="main" style="height: calc(100vh - {{CustomBar}}px)">
-    <button class="share" open-type="share" >
+    <button class="share" bindtap="viewPost">
       <text class="iconfont icon-share"></text>
-      <text style="visibilty:hidden;">点击分享</text>
+      <text style="visibilty:hidden;color: transparent;">点击分享</text>
     </button>
     <view class="top-content">
       <view class="circle circle-1"></view>
@@ -21,5 +21,16 @@
       <view class="origin">Power by Pexels</view>
     </view>
   </view>
-  <canvas class="canvas-post" type="2d" id="mycanvas"/>
+  <view wx:if="{{showPost}}" class="post-model" style="height: {{ScreenHeight - 200}}px" bindtap="closePost">
+    <canvas class="canvas-post" style="width: {{ScreenWidth - 50}}px; height: {{ScreenHeight - 200}}px;" canvas-id="cat-canvas">
+      <cover-view class="cancel">
+        <button bindtap="closePost">
+          <icon type="cancel" size="28" color="#333"></icon>
+        </button>
+      </cover-view>
+      <cover-view class="save-block">
+        <button type="primary" class="save-btn" bindtap="saveToAlbum">保存到相册并分享到朋友圈</button>
+      </cover-view>
+    </canvas>
+  </view>
 </view>

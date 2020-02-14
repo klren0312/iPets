@@ -18,6 +18,7 @@ App({
     wx.getSystemInfo({
       success: e => {
         this.globalData.ScreenHeight = e.screenHeight
+        this.globalData.ScreenWidth = e.screenWidth
         this.globalData.StatusBar = e.statusBarHeight;
         let capsule = wx.getMenuButtonBoundingClientRect();
         if (capsule) {
@@ -33,6 +34,7 @@ App({
     Custom: '',
     CustomBar: '',
     StatusBar: '',
-    ScreenHeight: ''
+    ScreenHeight: '',
+    ScreenWidth: ''
   }
 })

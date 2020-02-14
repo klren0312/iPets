@@ -124,8 +124,46 @@ button:not([size='mini']) {
   -webkit-text-fill-color:transparent;
 }
 
-.canvas-post {
-  position:fixed;
+.post-model {
+  overflow: hidden;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: #fff;
+  box-shadow: 0px 0px 100px 300px rgba(0,0,0,.8);
+}
+
+.post-model .cancel {
+  position: absolute;
+  right: 0;
   top: 0;
-  z-index: 999;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  background: transparent;
+  z-index: 2;
+}
+.post-model .cancel button {
+  background: transparent;
+}
+
+.post-model .save-block {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+.post-model .save-btn {
+  width: 100%;
+  border-radius: 0;
 }
